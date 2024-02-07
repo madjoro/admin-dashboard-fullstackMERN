@@ -1,3 +1,6 @@
 {
-  "git.ignoreLimitWarning": true
+  "git.ignoreLimitWarning": true,
+  "workbench.sideBar.location": "left",
+  "window.zoomLevel": 1.1,
+  "editor.fontSize": 16
 }
