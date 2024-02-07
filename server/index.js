@@ -26,3 +26,5 @@ app.use("/client", clientRoutes);
 app.use("/general", generalRoutes);
 app.use("/management", managementRoutes);
 app.use("/sales", salesRoutes);
+
+// mongo U:dummyuser P: TA1mISPnF78OHgFG
