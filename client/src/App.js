@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import { themeSettings } from "theme";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Dashboard from "scenes/dashboard";
+import Layout from "scenes/layout";
 
 function App() {
   const mode = useSelector((state) => state.global.mode);
