@@ -35,6 +35,23 @@ import FlexBetween from "./FlexBetween";
 import profileImage from "assets/profile.webp";
 import { useTheme } from "@emotion/react";
 
+const navItems = [
+  { text: "Dashboard", icon: <HomeOutlined /> },
+  { text: "Client Facing", icon: null },
+  { text: "Products", icon: <ShoppingCartOutlined /> },
+  { text: "Customers", icon: <Groups2Outlined /> },
+  { text: "Transactions", icon: <ReceiptLongOutlined /> },
+  { text: "Geography", icon: <PublicOutlined /> },
+  { text: "Sales", icon: null },
+  { text: "Overview", icon: <PointOfSaleOutlined /> },
+  { text: "Daily", icon: <TodayOutlined /> },
+  { text: "Monhtly", icon: <CalendarMonthOutlined /> },
+  { text: "Breakdown", icon: <PieChartOutlined /> },
+  { text: "Management", icon: null },
+  { text: "Admin", icon: <AdminPanelSettingsOutlined /> },
+  { text: "Performance", icon: <TrendingUpOutlined /> },
+];
+
 const Sidebar = ({
   drawerWidth,
   isSidebarOpen,
@@ -81,8 +98,63 @@ const Sidebar = ({
                     ECOMVISION
                   </Typography>
                 </Box>
+                {isNonMobile && (
+                  <IconButton onClick={setIsSidebarOpen(!isSidebarOpen)}>
+                    <ChevronLeft></ChevronLeft>
+                  </IconButton>
+                )}
               </FlexBetween>
             </Box>
+            <List>
+              {navItems.map(({ text, icon }) => {
+                if (!icon) {
+                  return (
+                    <Typography
+                      key={text}
+                      sx={{ m: "2.25rem 0 1rem 3rem" }}>
+                      {text}
+                    </Typography>
+                  );
+                }
+                const lcText = text.toLowerCase();
+                return (
+                  <ListItem
+                    key={text}
+                    disablePadding>
+                    <ListItemButton
+                      onClick={() => {
+                        navigate(`/${lcText}`);
+                        setActive(lcText);
+                      }}
+                      sx={{
+                        backgroundColor:
+                          active === lcText
+                            ? theme.palette.secondary[300]
+                            : "transparent",
+                        color:
+                          active === lcText
+                            ? theme.palette.primary[600]
+                            : theme.palette.secondary[100],
+                      }}></ListItemButton>
+                    <ListItemIcon
+                      sx={{
+                        ml: "2rem",
+                        color:
+                          active === lcText
+                            ? theme.palette.primary[600]
+                            : theme.palette.secondary[200],
+                      }}>
+                      {icon}
+                    </ListItemIcon>
+                    <ListItemText primary={text}></ListItemText>
+                    {active === lcText && (
+                      <ChevronRightOutlined
+                        sx={{ ml: "auto" }}></ChevronRightOutlined>
+                    )}
+                  </ListItem>
+                );
+              })}
+            </List>
           </Box>
         </Drawer>
       )}
