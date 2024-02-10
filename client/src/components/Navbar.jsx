@@ -19,7 +19,7 @@ import {
   IconButton,
 } from "@mui/material";
 
-const Navbar = () => {
+const Navbar = ({ isSidebarOpen, setIsSidebarOpen }) => {
   const dispatch = useDispatch();
   const theme = useTheme();
 
@@ -35,7 +35,7 @@ const Navbar = () => {
           justifyContent: "space-between",
         }}>
         <FlexBetween>
-          <IconButton onClick={() => console.log("Open/close sidebar")}>
+          <IconButton onClick={() => setIsSidebarOpen(!isSidebarOpen)}>
             <MenuIcon></MenuIcon>
           </IconButton>
           <FlexBetween
